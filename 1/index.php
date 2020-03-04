@@ -6,13 +6,12 @@
 </head>
 
 <body>
-<form action="1.php">
+<form action="index.php">
     <textarea name="textinput" placeholder="Enter bf code here"></textarea><br>
     <input type="text" name='text' placeholder="Enter prmtrs here"><br>
-    <button>g</button>
+    <button>go</button>
 </form>
 </body>
-
 </html>
 
 <?php
