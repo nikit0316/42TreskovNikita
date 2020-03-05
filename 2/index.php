@@ -10,41 +10,48 @@
     <?php
     $initial_str = $_REQUEST['textinput'] ?? '';
     $counter = 0;
+    $final_string="";
     function doing($a="")
     {
-        for ($i=0;$i<strlen($a);$i++)
+        for ($i=0; $i<strlen($a); $i++)
         {
             global $counter;
-            switch($a[$i])
+            $symbol=$a[$i];
+            switch($symbol)
             {
                 case 'h':
-                    $a[$i]='4';
+                    $symbol="4";
                     $counter++;
                 break;
 
                 case 'i':
-                    $a[$i]='1';
+                    $symbol="1";
                     $counter++;
                 break;
 
                 case 'e':
-                    $a[$i]='3';
+                    $symbol="3";
                     $counter++;
                 break;
 
                 case 'o':
-                    $a[$i]='0';
+                    $symbol="0";
                     $counter++;
                 break;
 
                 default:
                 break;
             }
-        }
-        return $a;
+            yield $symbol;
+        }        
     }
-    $final_string=doing($initial_str);
-    echo "$final_string количество: $counter<br>"
+    
+    $generator=doing($initial_str);
+    foreach ($generator as $value)
+    {
+        $final_string = $final_string . $value;
+    }
+    echo "$final_string количество: $counter";
     ?>    
 </body>
 </html>
