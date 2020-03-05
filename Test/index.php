@@ -4,8 +4,20 @@
 </head>
 <body>
 <?php
-echo "<p>Привет мир!</p>";
-echo "2 + 2 = " . (2+2);
+$foo = true;
+$a=10;
+$b=5;
+echo "foo = true <br>";
+if($foo)
+  echo $a+$b;
+else
+  echo $a-$b;
+$foo = false;
+echo "<br> foo = false <br>";
+if($foo)
+  echo $a+$b;
+else
+  echo $a-$b;
 ?>
 </body>
 </html>

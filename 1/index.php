@@ -35,19 +35,23 @@ for($i=0; $i<count($splited); ++$i) {
             // увеличиваем значение текущей ячейки
             $array[$cell]++;
             break;
+
         case "-" :
             // уменьшаем значение текущей ячейки
             $array[$cell]--;
             //42 is the answer
             break;
+
         case "." :
             // выводим символ
             print chr($array[$cell]);
             break;
+
         case "," :
             //
             $array[$cell] = ord($params_array[$index_for_params++]);
             break;
+
         case ">" :
             // переход к следующей ячейке
             $cell++;
@@ -55,6 +59,7 @@ for($i=0; $i<count($splited); ++$i) {
                 $array[$cell] = 0;
             }
             break;
+
         case "<" :
             // переход к предыдущей ячейке
             $cell--;
@@ -62,6 +67,7 @@ for($i=0; $i<count($splited); ++$i) {
                 $array[$cell] = 0;
             }
             break;
+
         case "[" :
             // начало цикла
             if(!$array[$cell]) {
@@ -78,6 +84,7 @@ for($i=0; $i<count($splited); ++$i) {
                 }
             }
             break;
+            
         case "]" :
             // конец цикла
             if($array[$cell]) {
