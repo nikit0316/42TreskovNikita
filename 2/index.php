@@ -1,57 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <?php include ("blocks/forms.php");?>
+    <?php include("blocks/forms.php"); ?>
     <?php
     $initial_str = $_REQUEST['textinput'] ?? '';
     $counter = 0;
-    $final_string="";
-    function doing($a="")
+    $final_string = "";
+    function doing($a = "")
     {
-        for ($i=0; $i<strlen($a); $i++)
+        function replacing($a = "")
         {
-            global $counter;
-            $symbol=$a[$i];
-            switch($symbol)
-            {
-                case 'h':
-                    $symbol="4";
-                    $counter++;
-                break;
+            for ($i = 0; $i < strlen($a); $i++) {
+                global $counter;
+                $symbol = $a[$i];
+                switch ($symbol) {
+                    case 'h':
+                        $symbol = "4";
+                        $counter++;
+                        break;
 
-                case 'i':
-                    $symbol="1";
-                    $counter++;
-                break;
+                    case 'i':
+                        $symbol = "1";
+                        $counter++;
+                        break;
 
-                case 'e':
-                    $symbol="3";
-                    $counter++;
-                break;
+                    case 'e':
+                        $symbol = "3";
+                        $counter++;
+                        break;
 
-                case 'o':
-                    $symbol="0";
-                    $counter++;
-                break;
+                    case 'o':
+                        $symbol = "0";
+                        $counter++;
+                        break;
 
-                default:
-                break;
+                    default:
+                        break;
+                }
+                yield $symbol;
             }
-            yield $symbol;
-        }        
+        }
+        $b = "";
+        $generator = replacing($a);
+        foreach ($generator as $value) {
+            $b = $b . $value;
+        }
+        return $b;
     }
-    
-    $generator=doing($initial_str);
-    foreach ($generator as $value)
-    {
-        $final_string = $final_string . $value;
-    }
+    $final_string = doing($initial_str);
     echo "$final_string количество: $counter";
-    ?>    
+    ?>
 </body>
+
 </html>
