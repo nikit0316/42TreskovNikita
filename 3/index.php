@@ -15,20 +15,27 @@
     <?php
     $initial_text = $_REQUEST['textinput'] ?? '';
     $strok_arr = explode(PHP_EOL, $initial_text);
-    $count = count($strok_arr);
-    for ($i = 0; $i < $count; $i++) {
-        $stroka = randomiser($strok_arr[$i]);
-        while (in_array($stroka, $strok_arr)) {
-            $stroka = randomiser($strok_arr[$i]);
+    foreach ($strok_arr as $str) {
+        if (count(explode(" ", $str)) < 2) {
+            throw new Exception('Строка состоит менее чем из двух слов');
         }
-        array_push($strok_arr, $stroka);
     }
-    print_r($strok_arr);
+    $count = count($strok_arr);
+    if ($count > 0) {
+        for ($i = 0; $i < $count; $i++) {
+            $stroka = randomiser($strok_arr[$i]);
+            while (in_array($stroka, $strok_arr)) {
+                $stroka = randomiser($strok_arr[$i]);
+            }
+            array_push($strok_arr, $stroka);
+        }
+        print_r($strok_arr);
 
-    $keys = sorting($strok_arr);
-    for ($i = 0; $i < count($strok_arr); $i++) {
-        $stroka = $strok_arr[$keys[$i]];
-        echo "<br> $stroka";
+        $keys = sorting($strok_arr);
+        for ($i = 0; $i < count($strok_arr); $i++) {
+            $stroka = $strok_arr[$keys[$i]];
+            echo "<br> $stroka";
+        }
     }
 
     function randomiser(string $stroka)
