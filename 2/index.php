@@ -8,8 +8,7 @@
 </head>
 
 <body>
-    <?php include("blocks/forms.php"); ?>
-    <?php
+    <?php include("blocks/forms.php");    
     $initial_str = $_REQUEST['textinput'] ?? '';
     $counter = 0;
     $final_string = "";
@@ -47,12 +46,12 @@
                 yield $symbol;
             }
         }
-        $b = "";
+        $ref_str = "";
         $generator = replacing($a);
         foreach ($generator as $value) {
-            $b = $b . $value;
+            $ref_str = $ref_str . $value;
         }
-        return $b;
+        return $ref_str;
     }
     $final_string = doing($initial_str);
     echo "$final_string количество: $counter";
