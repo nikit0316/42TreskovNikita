@@ -20,35 +20,27 @@ width: 500px;
     <?php
     $sum=0;
     $line=[];
-    $exp="/([0-9]+)/";
-    $text=$_REQUEST["textinput"] ?? '';
-    $matches=preg_match_all($exp, $text, $match);   
-    var_dump(
-        $matches,        
-        $match
-    );   
+    $exp="/([a-z\s][0-9]+)/";  
+    $text=$_REQUEST["textinput"] ?? "";
+    $matches=preg_match_all($exp, $text, $match);
     for ($i=0;$i<count($match[0]);$i++)
     {
-        $sum+=(int)($match[0][$i]);
+        $sum+=preg_replace('/[^0-9]/','', $match[0][$i]);
     }    
-    $exp_second="/([0-9]+)/";
-    $lines=preg_split($exp_second,$text);
-    $result=[
-        0=>$sum
-    ];
+    $lines=preg_split($exp,$text);    
     for ($i=0;$i<count($match[0]);$i++)
     {        
         array_push($line,[
-            "text"=>"$lines[$i]+$match[0][$i]",
-            "weight"=>$match[0][$i],
-            "probability"=>(int)$sum/(int)$weight
+            "text"=>$lines[$i] . $match[0][$i],
+            "weight"=>preg_replace('/[^0-9]/','', $match[0][$i]),
+            "probability"=>preg_replace('/[^0-9]/','', $match[0][$i])/(int)$sum
         ]);
     }
     $result = [
-        0=>$sum,
-        "data:"=>$line
-    ];
-    print_r($result);
+        "sum"=>$sum,
+        "data"=>$line
+    ];    
+    print_r(json_encode($result, JSON_UNESCAPED_UNICODE));    
     ?>
 </body>
 </html>
