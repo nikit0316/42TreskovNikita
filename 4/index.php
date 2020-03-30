@@ -13,25 +13,27 @@ width: 500px;
 }
 </style>
 <body>
-<form>
-    <textarea name="textinput" placeholder="Enter your text here"></textarea><br>
-    <button>go</button>
-</form>
     <?php
+    include ("form.php");
     $sum=0;
     $line=[];
+    $full_lines=[];
     $exp="/([a-z\s][0-9]+)/";  
     $text=$_REQUEST["textinput"] ?? "";
     $matches=preg_match_all($exp, $text, $match);
+
     for ($i=0;$i<count($match[0]);$i++)
     {
         $sum+=preg_replace('/[^0-9]/','', $match[0][$i]);
     }    
-    $lines=preg_split($exp,$text);    
+    
+    $lines=preg_split($exp,$text);
+
     for ($i=0;$i<count($match[0]);$i++)
     {        
+        $full_lines[$i]=$lines[$i] . $match[0][$i];
         array_push($line,[
-            "text"=>$lines[$i] . $match[0][$i],
+            "text"=>$full_lines[$i],
             "weight"=>preg_replace('/[^0-9]/','', $match[0][$i]),
             "probability"=>preg_replace('/[^0-9]/','', $match[0][$i])/(int)$sum
         ]);
@@ -39,8 +41,14 @@ width: 500px;
     $result = [
         "sum"=>$sum,
         "data"=>$line
-    ];    
-    print_r(json_encode($result, JSON_UNESCAPED_UNICODE));    
+    ];   
+    session_start();
+    $_SESSION["transition_lines"]=$line;   
+    $_SESSION["transition_weight"]=$result['sum'];
+    print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+    echo "</br>";
+    echo "</br>";
+    include ("4.2.php");
     ?>
 </body>
 </html>
