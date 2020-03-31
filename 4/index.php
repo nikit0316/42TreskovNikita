@@ -20,6 +20,7 @@ width: 500px;
     $full_lines=[];
     $exp="/([a-z\s][0-9]+)/";  
     $text=$_REQUEST["textinput"] ?? "";
+    if ($text==null or !preg_match($exp,$text)) exit("Введите правильную строку");
     $matches=preg_match_all($exp, $text, $match);
 
     for ($i=0;$i<count($match[0]);$i++)

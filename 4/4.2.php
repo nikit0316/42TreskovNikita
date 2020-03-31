@@ -6,7 +6,6 @@ for ($i=0;$i<count($lines_array);$i++)
 {
     $weight_arr[$i]=($weight_arr[$i-1] ?? 0) + $lines_array[$i]['weight'];
 }
-print_r ($weight_arr);
 asking($lines_array);
 
 function generator($lines,$count=1)
