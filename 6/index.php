@@ -9,9 +9,7 @@
 
 <body>
     <?php
-    $ini = parse_ini_file("C:/xampp/htdocs/42TreskovNikita/6/index.ini", true);
-    var_dump($ini);
-    echo preg_replace('/"/', '', $ini["main"]["filename"]);
+    $ini = parse_ini_file("C:/xampp/htdocs/42TreskovNikita/6/index.ini", true);   
     $text = file("C:/xampp/htdocs/42TreskovNikita/6/" . $ini["main"]["filename"]);
     $source_text= $text;
     first();
@@ -19,8 +17,7 @@
     {
         global $text;
         global $source_text;
-        global $ini;
-        echo "<br>";
+        global $ini;        
         for ($i=0;$i<count($text);$i++)
         {            
             $symbol = preg_replace('/"/', '', $ini["first_rule"]["symbol"]);            
@@ -36,8 +33,6 @@
                     $text[$i] = mb_strtolower($text[$i]);                    
                 };
             }
-            echo "<br>";
-            echo $text[$i];
         };
     };
     
@@ -47,14 +42,10 @@
         global $text;
         global $source_text;
         global $ini;        
-        echo "<br>";
-        echo "<br>";
         for ($x=0;$x<count($text);$x++)
         {            
             $symbol = preg_replace('/"/', '', $ini["second_rule"]["symbol"]);
-            $pos = strpos($source_text[$x], $symbol);
-            echo "<br>";
-            var_dump($pos);           
+            $pos = strpos($source_text[$x], $symbol);                   
             $number_array = ['0','1','2','3','4','5','6','7','8','9'];           
             if ($pos === 0)
             {
@@ -84,9 +75,7 @@
                         }
                     };
                 };
-            }
-            echo "<br>";
-            echo $text[$x] ;
+            }            
         };
     };
 
@@ -95,23 +84,18 @@
     {
         global $text;
         global $ini;   
-        global $source_text;     
-        echo "<br>";
-        echo "<br>";
-        $chars = $ini["third_rule"]["delete"];
-        echo $chars;
+        global $source_text;
+        $chars = $ini["third_rule"]["delete"];        
         for ($x=0;$x<count($text);$x++)
         {            
             $symbol = preg_replace('/"/', '', $ini["third_rule"]["symbol"]);
-            $pos = strpos($source_text[$x], $symbol);
-            echo "<br>";
-            var_dump($pos);
+            $pos = strpos($source_text[$x], $symbol);            
             if ($pos === 0)
             {
                $text[$x] = preg_replace('/['.$chars.']/', '', $text[$x]);                
-            }
+            }            
+            echo $text[$x];
             echo "<br>";
-            echo $text[$x] ;
         }  
     }
     ?>
