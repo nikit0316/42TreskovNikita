@@ -11,8 +11,7 @@
     <?php
     $ini = parse_ini_file("C:/xampp/htdocs/42TreskovNikita/6/index.ini", true);   
     $text = file("C:/xampp/htdocs/42TreskovNikita/6/" . $ini["main"]["filename"]);
-    $source_text= $text;
-    first();
+    $source_text= $text;    
     function first()
     {
         global $text;
@@ -35,8 +34,7 @@
             }
         };
     };
-    
-    second();
+        
     function second()
     {        
         global $text;
@@ -74,12 +72,13 @@
                             }
                         }
                     };
-                };
-            }            
+                };               
+            }   
+            echo $text[$x];
+            echo '<br>';         
         };
     };
-
-    third();
+    
     function third()
     {
         global $text;
@@ -93,12 +92,15 @@
             if ($pos === 0)
             {
                $text[$x] = preg_replace('/['.$chars.']/', '', $text[$x]);                
-            }            
-            echo $text[$x];
-            echo "<br>";
+            }   
         }  
-    }
+    }   
+    third();
+    first();
+    second();  
+    $test = 'проверка';
+$splitTest = str_split($test);
+print_r($splitTest);
     ?>
 </body>
-
 </html>
