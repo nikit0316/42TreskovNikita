@@ -9,8 +9,8 @@
 
 <body>
     <?php
-    $ini = parse_ini_file("C:/xampp/htdocs/42TreskovNikita/6/index.ini", true);   
-    $text = file("C:/xampp/htdocs/42TreskovNikita/6/" . $ini["main"]["filename"]);
+    $ini = parse_ini_file("index.ini", true);   
+    $text = file($ini["main"]["filename"]);    
     $source_text= $text;    
     function first()
     {
@@ -97,10 +97,10 @@
     }   
     third();
     first();
-    second();  
+    second();
     $test = 'проверка';
-$splitTest = str_split($test);
-print_r($splitTest);
+    $splitTest = str_split($test);
+    print_r($splitTest);
     ?>
 </body>
 </html>
