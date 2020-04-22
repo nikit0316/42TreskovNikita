@@ -24,9 +24,10 @@
     {
         $command = iconv('utf-8','cp866','ping ' . $site);      
         exec($command,$array);        
+        if ($array == null) exit ("Неправильный адрес сайта");
         for ($i=0;$i<count($array);$i++)
         {
-            $array[$i]=iconv('cp866','utf-8',$array[$i]);
+            $array[$i] = iconv('cp866','utf-8',$array[$i]);
         }
         preg_match('/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/',$array[1],$matches);
         echo "<b>$matches[0]</b>";       
