@@ -6,22 +6,34 @@
   <title>Document</title>
 </head>
 <body>
-<form action="index.php" method="post">
-Вам нужен доступ в интернет?
-<input type="checkbox" name="formWheelchair"/><br/>
-</form> 
 <?php
-function checkbox_verify($_name)
+class MyClass
 {
-  $result=0;
-  if (isset($_REQUEST[$_name]))
-  {
-    $result=2;
-    if ($_REQUEST[$_name]=='on') $result=1;
-  }
-  return $result;
+    public $var1 = 'значение 1';
+    public $var2 = 'значение 2';
+    public $var3 = 'значение 3';
+
+    protected $protected = 'защищенная переменная';
+    private   $private   = 'закрытая переменная';
+
+    function iterateVisible() {
+       echo "MyClass::iterateVisible:\n";
+       foreach ($this as $key => $value) {
+           print "$key => $value\n";
+       }
+    }
 }
-echo checkbox_verify('formwheelchair');
-?>     
+
+$class = new MyClass();
+
+foreach($class as $key => $value) {
+    print "$key => $value\n";
+}
+echo "\n";
+
+
+$class->iterateVisible();
+
+?>
 </body>
 </html>
