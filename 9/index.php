@@ -20,17 +20,17 @@
     <input type="submit" name="submit" value="Отправить">
 </form>
     <?php
-    $text = $_REQUEST['textinput'];
+    $text = $_REQUEST['textinput'] ?? "";
     $filename = $_REQUEST['filename'];
-    $lines = array("Somebody", "once told me", "The world gonna", "Enroll me", "i Ain't ");
+    $lines = array("Somebody ", "once told me ", "The world gonna ", "Enroll me ", "i Ain't ");
     abstract class Logger
-    {               
-        function __construct($line=null)
+    {
+        function addLine($line=null)
         {
             global $lines;
             if ($line != null) array_push($lines,$line);
-        }  
-    }  
+        }
+    }
 
     class File extends Logger
     {
@@ -38,56 +38,75 @@
 
         function __construct($line=null,$dir)
         {
-            parent::__construct($line);
+            if ($dir == null)
+            {
+                exit("Вы не ввели имя файла");
+            }
+            else $dir = $dir . ".txt";
             global $lines;            
             $fd = fopen($dir, 'w') or die("не удалось создать файл");
             foreach ($lines as $line)
             {
                 fwrite($fd, $line);
-                fwrite($fd, '\n');
+                fwrite($fd, "\n");
             }
             fclose($fd);
-
         }
     }
 
     class Brow extends Logger
     {
-        function __construct($line=null)
-        {
-            parent::__construct($line);
+        function __construct()
+        {            
             global $lines;
             if (isset($_POST["time"]) && $_POST["time"] == 0)
             {
                 foreach($lines as $line)
                 {
                     echo $line;
+                    echo "<br>";
                 }
             }
             else if (isset($_POST["time"]) && $_POST["time"] == 1)
             {
                 $d = getdate();
                 echo "$d[hours]:$d[minutes]:$d[seconds]";
+                echo "<br>";
                 foreach($lines as $line)
                 {
                     echo $line;
+                    echo "<br>";
                 }
             }
             else
             {
                 $d = getdate();
                 echo "$d[mday].$d[mon].$d[year] $d[hours]:$d[minutes]:$d[seconds]";
+                echo "<br>";
                 foreach($lines as $line)
                 {
                     echo $line;
+                    echo "<br>";
                 }
             }
         }
     }
-    
-    if ($_POST['logger'] === 0)
+
+    function checker($lines)
     {
-        
+        foreach($lines as $line)
+        {
+
+        }
+    }
+    
+    if (isset($_POST['logger']) && ($_POST['logger'] == 1))
+    {
+        $log = new File($text,$filename);
+    }
+    else if (isset($_POST['logger']) && ($_POST['logger'] == 0))
+    {
+        $log = new Brow($text);
     }
     ?>
 </body>
