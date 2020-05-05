@@ -50,6 +50,12 @@
                 fwrite($fd, $line);
                 fwrite($fd, "\n");
             }
+            $checks=checker($lines);
+            foreach ($checks as $value)
+            {
+                fwrite($fd,$value);
+                fwrite($fd, "\n");
+            }
             fclose($fd);
         }
     }
@@ -89,6 +95,12 @@
                     echo "<br>";
                 }
             }
+
+            $checks=checker($lines);
+            foreach ($checks as $value)
+            {
+                echo "$value <br>";
+            }
         }
     }
 
@@ -96,7 +108,14 @@
     {
         foreach($lines as $line)
         {
-
+            if (preg_match('/([A-Z]+)/',$line))
+            {
+               yield "Строка содержит заглавные буквы $line";
+            }         
+            else 
+            {
+                yield "Строка не содержит заглавные буквы $line";
+            }
         }
     }
     
