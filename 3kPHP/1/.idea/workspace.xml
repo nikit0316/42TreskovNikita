@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2b2cf305-3945-435c-8f96-efb40676e424" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="ProjectId" id="1hbtMCPBN7XWJnR8Bm8Q0zECyc0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2b2cf305-3945-435c-8f96-efb40676e424" name="Default Changelist" comment="" />
+      <created>1600291569659</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600291569659</updated>
+      <workItem from="1600291570896" duration="2163000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1020" y="178" key="#CLI_Interpreters" timestamp="1600293597213">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1020" y="178" key="#CLI_Interpreters/0.0.1920.1040/1920.101.1920.1040@0.0.1920.1040" timestamp="1600293597213" />
+    <state x="1147" y="166" key="#PHP" timestamp="1600293598229">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1147" y="166" key="#PHP/0.0.1920.1040/1920.101.1920.1040@0.0.1920.1040" timestamp="1600293598229" />
+    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600293270798">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="828" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.101.1920.1040@0.0.1920.1040" timestamp="1600293270798" />
+    <state x="1274" y="446" key="NewPhpFileDialog" timestamp="1600291791355">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1274" y="446" key="NewPhpFileDialog/0.0.1920.1040/1920.101.1920.1040@0.0.1920.1040" timestamp="1600291791355" />
+    <state x="1103" y="230" key="search.everywhere.popup" timestamp="1600292117104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1103" y="230" key="search.everywhere.popup/0.0.1920.1040/1920.101.1920.1040@0.0.1920.1040" timestamp="1600292117104" />
+  </component>
+</project>
